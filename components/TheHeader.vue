@@ -1,7 +1,9 @@
 <template>
   <header class="header">
     <div class="main-column">
-      <logo />
+      <nuxt-link to="/">
+        <logo />
+      </nuxt-link>
     </div>
   </header>
 </template>
@@ -17,6 +19,7 @@ export default {
 
 <style>
 .header{
+  width: 100%;
   height: 65px;
   padding-top: 36px;
   position: absolute;

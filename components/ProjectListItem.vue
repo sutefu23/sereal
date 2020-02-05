@@ -27,7 +27,8 @@ Vue.use(VueTilt)
 export default {
   props: {
     project: {
-      type: Object
+      type: Object,
+      default: () => {}
     }
   },
   methods: {
@@ -64,7 +65,7 @@ export default {
   }
   &-title{
     font-size: 1.6rem;
-    line-height: 24;
+    line-height: 1.5rem;
     margin-top: 4px;
   }
 }

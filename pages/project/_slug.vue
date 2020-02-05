@@ -10,9 +10,9 @@
     </picture>
     <article>
       <div class="project-header">
-        <span class="project-client">
+        <p class="project-client">
           {{ project.client }}
-        </span>
+        </p>
         <h1 class="project-title">
           {{ project.title }}
         </h1>
@@ -22,7 +22,11 @@
           <span v-for="tag in project.tags" v-bind:key="tag.order" class="project-tags">{{ tag.name }}</span>
         </div>
       </div>
-      <section class="project-content" v-html="project.content">
+      <section class="project-content">
+        <h2>{{ project.article_title }}</h2>
+        <div v-html="project.content">
+          {{ }}
+        </div>
       </section>
     </article>
     <aside class="project-other">
@@ -39,17 +43,21 @@
 export default {
   async asyncData ({ app, params, error }) {
     try {
-      const res = await app.$axios.$get('/projects?slug=', {
+      const res = await app.$axios.$get('https://sereal.jp/admin/wp-json/api/projects?slug=', {
         params: {
           slug: params.slug
         }
       })
       return {
-        project: res.projects[0],
-        params
+        project: res.projects[0]
       }
     } catch (e) {
-      error({ statusCode: 404, message: 'ページ取得エラー' })
+      console.error(e)
+    }
+  },
+  methods: {
+    join ($array, $glue) {
+      return $array.join($glue)
     }
   }
 }
@@ -57,6 +65,7 @@ export default {
 <style lang="scss">
   .project{
     &-header{
+      margin-top: 56px;
       margin-bottom: 32px;
     }
     &-client{
@@ -66,16 +75,16 @@ export default {
     }
     &-title{
       font-size: 2.8rem;
-      line-height: 27;
       margin-bottom: 8px;
     }
     &-info{
       color:$gray-70;
       font-size: 1.4rem;
-      line-height: 15;
       font-weight: 300;
     }
   }
+  .project-header,
+  .project-content h2,
   .project-content p,
   .project-content ul,
   .project-content dl
@@ -84,9 +93,25 @@ export default {
     margin-right: auto;
     margin-left: auto;
   }
+  .project-content{
+    font-size: 1.4rem;
+    line-height: 2.5em;
+  }
+  .project-content h2{
+    font-size: 2.4rem;
+  }
+
   .project-content img{
-    max-width: 100%;
-    margin:100px 0;
+    position: relative;
+    width: 100vw;
+    margin-top:100px;
+    margin-bottom: 100px;
+    margin-left: calc(( 100vw - #{$article-column-width} ) / 2 * -1)
+  }
+  .project-other-section-title{
+    text-align: center;
+    font-size: 1.6rem;
+    line-height: 1.8rem;
   }
 @media screen and (max-width:750px){
   .project{
@@ -95,17 +120,16 @@ export default {
     }
     &-title{
       font-size: 2.0rem;
-      line-height: 34;
     }
     &-client{
       font-size: 1.2rem;
     }
     &-info{
       font-size: 1.2rem;
-      line-height: 13;
     }
   }
-
+  .project-header,
+  .project-content h2,
   .project-content p,
   .project-content ul,
   .project-content dl

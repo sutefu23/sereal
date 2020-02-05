@@ -35,5 +35,8 @@
     "eslint-plugin-nuxt": ">=0.4.2",
     "jest": "^24.1.0",
     "vue-jest": "^4.0.0-0"
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/sutefu23/sereal-official.git",
+  "license": "MIT"
 }

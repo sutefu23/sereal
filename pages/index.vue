@@ -1,6 +1,6 @@
 <template>
   <main class="home">
-    <project-list :projects="projects"/>
+    <project-list :projects="projects" />
   </main>
 </template>
 
@@ -12,12 +12,12 @@ export default {
   },
   async asyncData ({ app, error }) {
     try {
-      const res = await app.$axios.$get('/projects')
+      const res = await app.$axios.$get('https://sereal.jp/admin/wp-json/api/projects')
       return {
         projects: res.projects
       }
     } catch (e) {
-      error({ statusCode: 404, message: 'ページ取得エラー' })
+      console.error(e)
     }
   }
 }
