@@ -22,7 +22,7 @@ export default {
       { property: 'fb:app_id', content: 'FacebookAppID' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'icon', type: 'image/x-icon', href: this.$route + '/favicon.ico' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap' }
     ]
   },
