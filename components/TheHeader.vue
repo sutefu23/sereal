@@ -22,13 +22,15 @@ export default {
   width: 100%;
   height: 65px;
   padding-top: 36px;
-  position: absolute;
+  position: fixed;
   top:0;
+  z-index: 999;
   background: transparent
 }
-@media screen and (max-width:750px){
+@media screen and (max-width:768px){
  .header{
    height:4.8rem;
+   padding-top: 2.4rem;
  }
 }
 </style>

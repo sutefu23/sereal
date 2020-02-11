@@ -35,12 +35,14 @@ export default {
   */
   css: [
     '~/assets/css/reset.css',
-    '~/assets/css/fonts.css'
+    '~/assets/css/fonts.css',
+    '~/assets/css/transition.css'
   ],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '~plugins/scroll.js'
   ],
   /*
   ** Nuxt.js dev-modules

@@ -2,7 +2,7 @@
   <div class="main-column project-list">
     <project-list-item
       v-for="project in projects"
-      v-bind:key="project.order"
+      :key="project.order"
       :project="project"
     />
   </div>
@@ -16,7 +16,7 @@ export default {
   },
   props: {
     projects: {
-      type: Object,
+      type: Array,
       default: () => {}
     }
   }
@@ -26,6 +26,12 @@ export default {
 .project-list{
   display: flex;
   justify-content: space-between;
+  animation: slide-up-fade .5s ease-in-out;
 }
 
+@media screen and (max-width:768px){
+  .project-list{
+    display: block
+  }
+}
 </style>

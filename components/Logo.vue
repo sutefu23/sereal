@@ -50,8 +50,8 @@
     opacity: 1;
   }
 }
-@media screen and (max-width:750px){
- .header{
+@media screen and (max-width:768px){
+ .logo{
    width:9rem;
    height:1.6rem;
  }

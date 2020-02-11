@@ -56,9 +56,9 @@
   font-size: 1.1rem;
   line-height: 22;
 }
-@media screen and (max-width:750px){
+@media screen and (max-width:768px){
   .footer{
-    height: 50rem;
+    height: auto;
     padding-top: 16.4rem;
     padding-bottom: 3.2rem;
   }
@@ -69,21 +69,26 @@
     &-name{
       font-size: 1.6rem;
       margin-bottom: 2rem;
+      line-height: 1.8rem;
     }
     &-address{
       font-size: 1.2rem;
       margin-bottom: 2rem;
+      line-height: 1.8rem;
     }
     &-representative{
       font-size: 1.2rem;
       margin-bottom: 2rem;
+      line-height: 1.8rem;
     }
     &-contact{
       font-size: 1.4rem;
+      line-height: 1.6rem;
     }
   }
   .copy-right{
     font-size: 1.1rem;
+    line-height: 2.2rem;
   }
 }
 </style>

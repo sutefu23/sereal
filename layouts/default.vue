@@ -19,7 +19,7 @@ export default {
 html{
   font-family: 'Brown','Noto Sans JP', sans-serif;
   font-size: 10px;
-  color:$black;
+  color:$dark;
 }
 a{
   color:inherit;
@@ -42,7 +42,15 @@ img{
 .sp{
   display: none;
 }
-@media screen and (max-width:750px){
+@media screen and (max-width: $main-column-width){
+  .main-column{/*メイン列*/
+    max-width: 96vw;
+  }
+  .article-column{/*記事列*/
+    max-width: 90vw;
+  }
+}
+@media screen and (max-width:768px){
   html{
     font-size: calc(10 * 100vw / 375);
   }
@@ -55,5 +63,6 @@ img{
   .article-column{/*記事列*/
     max-width: $article-column-sp-width;
   }
+
 }
 </style>

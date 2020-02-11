@@ -1,18 +1,11 @@
 <template>
   <article class="project-list-item">
     <nuxt-link
-      v-tilt="{max:17, perspective:1200, scale:1.08, speed:4000}"
-      :to="projectLink(project.slug)"
+      v-tilt="{max:17, perspective:1200, speed:4000}"
+      :to="{ path: '/project/'+ project.slug }"
       class="project-list-link"
     >
-      <picture class="project-list-image">
-        <source :srcset="project.images.webp || project.images.x2 || project.images.original" type="image/webp">
-        <img
-          :src="project.images.original"
-          :srcset="project.images.x2 || project.images.original"
-          :alt="project.title"
-        >
-      </picture>
+      <project-main-image :project="project" class="project-image in-list" />
       <h2 class="project-list-title">
         {{ project.title }}
       </h2>
@@ -23,17 +16,17 @@
 <script>
 import Vue from 'vue'
 import VueTilt from 'vue-tilt.js'
+import ProjectMainImage from '~/components/ProjectMainImage.vue'
+
 Vue.use(VueTilt)
 export default {
+  components: {
+    ProjectMainImage
+  },
   props: {
     project: {
       type: Object,
       default: () => {}
-    }
-  },
-  methods: {
-    projectLink (slug) {
-      return '/project/' + slug
     }
   }
 }
@@ -51,22 +44,20 @@ export default {
   }
   &-link{
     display: block;
-  }
-  &-image{
-    width:314px;
-    height:223px;
-    margin: 20px auto 10px;
-    transition: width,height,margin 0.5s ease-in-out
-  }
-  &-image:hover{
-    width:100%;
-    height:243px;
-    margin:0px
+    height: 100%;
   }
   &-title{
     font-size: 1.6rem;
     line-height: 1.5rem;
-    margin-top: 4px;
+  }
+  @media screen and (max-width:765px){
+    &-item{
+      width:100%;
+      height:28.1rem;
+    }
+    &-item + &-item{
+      margin-top:4.6rem;
+    }
   }
 }
 </style>

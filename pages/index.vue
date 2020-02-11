@@ -10,11 +10,11 @@ export default {
   components: {
     ProjectList
   },
-  async asyncData ({ app, error }) {
+  async asyncData ({ store }) {
     try {
-      const res = await app.$axios.$get('https://sereal.jp/admin/wp-json/api/projects')
+      const projects = await store.dispatch('getProjects')
       return {
-        projects: res.projects
+        projects
       }
     } catch (e) {
       console.error(e)
@@ -29,7 +29,7 @@ export default {
   padding-top: 50px;
   padding-bottom: 218px;
 }
-@media screen and (max-width:750px){
+@media screen and (max-width:768px){
   .home{
     margin-top: 4.8rem;
     padding-top: 3.2rem;

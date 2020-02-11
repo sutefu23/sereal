@@ -1,13 +1,6 @@
 <template>
   <main class="project">
-    <picture class="project-image">
-      <source :srcset="project.images.webp" type="image/webp">
-      <img
-        :src="project.images.original"
-        :srcset="project.images.x2 || project.images.original"
-        :alt="project.title"
-      >
-    </picture>
+    <project-main-image :project="project" class="project-image in-main" />
     <article>
       <div class="project-header">
         <p class="project-client">
@@ -18,8 +11,8 @@
         </h1>
         <div class="project-info">
           <span class="project-year">{{ project.year }}</span>
-          <span v-show="project.year && project.tags">/</span>
-          <span v-for="tag in project.tags" v-bind:key="tag.order" class="project-tags">{{ tag.name }}</span>
+          <span v-show="project.year && project.tags"> / </span>
+          <span v-for="tag in project.tags" :key="tag.order" class="project-tag">{{ tag.name }}</span>
         </div>
       </div>
       <section class="project-content">
@@ -33,37 +26,48 @@
       <h2 class="project-other-section-title">
         OTHER PROJECTS
       </h2>
-      <project-list />
+      <project-list :projects="projects" />
     </aside>
   </main>
 </template>
 
 <script>
-
+import ProjectMainImage from '~/components/ProjectMainImage.vue'
+import ProjectList from '~/components/ProjectList.vue'
 export default {
-  async asyncData ({ app, params, error }) {
+  components: {
+    ProjectList,
+    ProjectMainImage
+  },
+  async asyncData ({ store, params }) {
     try {
-      const res = await app.$axios.$get('https://sereal.jp/admin/wp-json/api/projects?slug=', {
-        params: {
-          slug: params.slug
+      const projects = await store.dispatch('getProjects')
+
+      const listProjects = []
+      let displayProject = ''
+
+      projects.forEach((project) => {
+        if (project.slug === params.slug) {
+          displayProject = project
+        } else {
+          listProjects.push(project)
         }
       })
       return {
-        project: res.projects[0]
+        projects: listProjects,
+        project: displayProject
       }
     } catch (e) {
       console.error(e)
-    }
-  },
-  methods: {
-    join ($array, $glue) {
-      return $array.join($glue)
     }
   }
 }
 </script>
 <style lang="scss">
   .project{
+    article{
+      animation: slide-up-fade .8s ease-in-out;
+    }
     &-header{
       margin-top: 56px;
       margin-bottom: 32px;
@@ -76,11 +80,15 @@ export default {
     &-title{
       font-size: 2.8rem;
       margin-bottom: 8px;
+      font-weight: bold;
     }
     &-info{
       color:$gray-70;
       font-size: 1.4rem;
       font-weight: 300;
+    }
+    &-tag + &-tag:before{
+      content: ", ";
     }
   }
   .project-header,
@@ -92,40 +100,66 @@ export default {
     max-width: $article-column-width;
     margin-right: auto;
     margin-left: auto;
+    color:inherit
   }
   .project-content{
     font-size: 1.4rem;
-    line-height: 2.5em;
+    line-height: 3.6rem;
+    color:$dark;
   }
   .project-content h2{
     font-size: 2.4rem;
+    margin-bottom: 18px;
+    color:black;
   }
 
   .project-content img{
     position: relative;
-    width: 100vw;
+    width: 99vw;
     margin-top:100px;
     margin-bottom: 100px;
     margin-left: calc(( 100vw - #{$article-column-width} ) / 2 * -1)
+  }
+  .project-other{
+    margin-top: 160px;
+    margin-bottom: 160px;
   }
   .project-other-section-title{
     text-align: center;
     font-size: 1.6rem;
     line-height: 1.8rem;
+    margin-bottom: 38px;
   }
-@media screen and (max-width:750px){
+@media screen and (max-width: $main-column-width){
+  .project-header,
+  .project-content h2,
+  .project-content p,
+  .project-content ul,
+  .project-content dl{/*記事列*/
+    max-width: 90vw;
+  }
+  .project-content img{
+    margin-left: calc(( 99vw - 90vw ) / 2 * -1)
+  }
+}
+@media screen and (max-width:768px){
   .project{
     &-header{
+      margin-top: 4.6rem;
       margin-bottom: 2.6rem;
     }
     &-title{
-      font-size: 2.0rem;
+      font-size: 2.4rem;
+      line-height: 2.3rem;
+      margin-bottom: 1rem;
     }
     &-client{
       font-size: 1.2rem;
+      margin-bottom: 1.2rem;
     }
     &-info{
       font-size: 1.2rem;
+      line-height: 1.3rem;
     }
   }
   .project-header,
@@ -136,9 +170,28 @@ export default {
   {
     max-width: $article-column-sp-width;
   }
+  .project-content{
+    font-size: 1.2rem;
+    line-height: 3rem;
+  }
+  .project-content h2{
+    font-size: 2rem;
+    line-height: 3.4rem;
+    margin-bottom: 2.6rem;
+  }
   .project-content img{
-    max-width: 100%;
-    margin:100px 0;
+    margin-top:6rem;
+    margin-bottom: 6rem;
+    margin-left: calc(( 100vw - #{$article-column-sp-width} ) / 2 * -1)
+  }
+  .project-other{
+    margin-top: 16rem;
+    margin-bottom: 16rem;
+  }
+  .project-other-section-title{
+    font-size: 1.6rem;
+    line-height: 1.8rem;
+    margin-bottom: 6rem
   }
 }
 </style>
