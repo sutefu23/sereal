@@ -1,11 +1,10 @@
 <template>
   <article class="project-list-item">
     <nuxt-link
-      v-tilt="{max:17, perspective:1200, speed:4000}"
       :to="{ path: '/project/'+ project.slug }"
       class="project-list-link"
     >
-      <project-main-image :project="project" class="project-image in-list" />
+      <project-main-image v-tilt="{max:10, perspective:1200, speed:4000,scale:1.089}" :project="project" class="project-image in-list" />
       <h2 class="project-list-title">
         {{ project.title }}
       </h2>
@@ -19,6 +18,7 @@ import VueTilt from 'vue-tilt.js'
 import ProjectMainImage from '~/components/ProjectMainImage.vue'
 
 Vue.use(VueTilt)
+
 export default {
   components: {
     ProjectMainImage
@@ -39,7 +39,7 @@ export default {
     height:281px;
     text-align: center
   }
-  &-item:nth-child(n+3){
+  &-item:nth-child(n+4){
     margin-top:26px;
   }
   &-link{
@@ -50,7 +50,7 @@ export default {
     font-size: 1.6rem;
     line-height: 1.5rem;
   }
-  @media screen and (max-width:765px){
+  @media screen and (max-width:1020px){
     &-item{
       width:100%;
       height:28.1rem;

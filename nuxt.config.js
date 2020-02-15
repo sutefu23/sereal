@@ -17,12 +17,12 @@ export default {
       { hid: 'og:url', property: 'og:url', content: this.$route },
       { hid: 'og:title', property: 'og:title', content: process.env.site_name },
       { hid: 'og:description', property: 'og:description', content: process.env.site_description },
-      { hid: 'og:image', property: 'og:image', content: this.$route + '/img/ogp.jpg' },
+      { hid: 'og:image', property: 'og:image', content: '/img/ogp.jpg' },
       { property: 'article:publisher', content: 'FacebookURL' },
       { property: 'fb:app_id', content: 'FacebookAppID' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: this.$route + '/favicon.ico' },
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap' }
     ]
   },
@@ -83,6 +83,22 @@ export default {
     ** You can extend webpack config here
     */
     extend (config, ctx) {
-    }
+    },
+    babel: {
+      presets: [
+        [
+          '@babel/preset-env',
+          {
+            targets: { ie: 11, uglify: true },
+            useBuiltIns: 'usage'
+          }
+        ]
+      ],
+      plugins: [
+        '@babel/transform-runtime',
+        '@babel/plugin-syntax-dynamic-import'
+      ]
+    },
+    vender: ['babel-polyfill']
   }
 }

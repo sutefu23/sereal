@@ -26,10 +26,10 @@ export default {
 .project-list{
   display: flex;
   justify-content: space-between;
-  animation: slide-up-fade .5s ease-in-out;
+  animation: slide-up-fade 1.5s;
 }
 
-@media screen and (max-width:768px){
+@media screen and (max-width:1020px){
   .project-list{
     display: block
   }

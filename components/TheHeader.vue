@@ -27,7 +27,7 @@ export default {
   z-index: 999;
   background: transparent
 }
-@media screen and (max-width:768px){
+@media screen and (max-width:1020px){
  .header{
    height:4.8rem;
    padding-top: 2.4rem;

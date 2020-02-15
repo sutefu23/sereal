@@ -29,7 +29,7 @@ export default {
   padding-top: 50px;
   padding-bottom: 218px;
 }
-@media screen and (max-width:768px){
+@media screen and (max-width:1020px){
   .home{
     margin-top: 4.8rem;
     padding-top: 3.2rem;

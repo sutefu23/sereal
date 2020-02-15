@@ -50,7 +50,7 @@ img{
     max-width: 90vw;
   }
 }
-@media screen and (max-width:768px){
+@media screen and (max-width:1020px){
   html{
     font-size: calc(10 * 100vw / 375);
   }

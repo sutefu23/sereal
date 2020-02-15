@@ -10,6 +10,10 @@
 </template>
 
 <script>
+import Vue from 'vue'
+import VueTilt from 'vue-tilt.js'
+Vue.use(VueTilt)
+
 export default {
   props: {
     project: {
@@ -25,10 +29,10 @@ export default {
   position: relative;
   overflow: hidden;
   display: block;
-  transition: all .3s ease-in-out;
+  transition: all 1.2s;
 }
 .project-image img{
-  transition: all .3s ease-in-out;
+  transition: all 1.2s;
 }
 .project-image.in-main{
   object-fit:fill;
@@ -46,16 +50,15 @@ export default {
     left: -147px;
     top :0px;
 }
-.project-list-item:hover .project-image.in-list{
-  width:342px;
-  height:243px;
-  margin: 10px auto 4px;
-}
+// .project-list-item:hover .project-image.in-list{
+//   width:342px;
+//   height:243px;
+//   margin: 10px auto 4px;
+//   transition: all .8s;
+// }
 .project-list-item:hover .project-image.in-list img{
-  width: 663px;
-  height: 265px;
-  left: -160.5px;
-  top :-12px;
+  transform: scale(1.02);
+  transition: all .8s;
 }
 @media screen and (max-width:1536px){
   .project-image{
@@ -69,7 +72,7 @@ export default {
     top :calc((767px - (100vw / 1536 * (100vw / 1536 * 677))) * -1);
   }
 }
-@media screen and (max-width:768px){
+@media screen and (max-width:1020px){
   .project-image.in-main{
     height: 38.7rem
   }

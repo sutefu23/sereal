@@ -2,7 +2,7 @@
   <main class="project">
     <project-main-image :project="project" class="project-image in-main" />
     <article>
-      <div class="project-header">
+      <div v-scroll="handleScroll" class="project-header fede-slide-up">
         <p class="project-client">
           {{ project.client }}
         </p>
@@ -15,14 +15,14 @@
           <span v-for="tag in project.tags" :key="tag.order" class="project-tag">{{ tag.name }}</span>
         </div>
       </div>
-      <section class="project-content">
+      <section v-scroll="handleScroll" class="project-content fede-slide-up">
         <h2>{{ project.article_title }}</h2>
         <div v-html="project.content">
           {{ }}
         </div>
       </section>
     </article>
-    <aside class="project-other">
+    <aside v-scroll="handleScroll" class="project-other fede-slide-up">
       <h2 class="project-other-section-title">
         OTHER PROJECTS
       </h2>
@@ -60,14 +60,21 @@ export default {
     } catch (e) {
       console.error(e)
     }
+  },
+  methods: {
+    handleScroll: (evt, el) => {
+      const top = el.getBoundingClientRect().top
+      if (window.scrollY > top + window.pageYOffset - 600) {
+        el.classList.add('show')
+        return true
+      }
+      return false
+    }
   }
 }
 </script>
 <style lang="scss">
   .project{
-    article{
-      animation: slide-up-fade .8s ease-in-out;
-    }
     &-header{
       margin-top: 56px;
       margin-bottom: 32px;
@@ -130,6 +137,17 @@ export default {
     line-height: 1.8rem;
     margin-bottom: 38px;
   }
+  .fede-slide-up{
+    position: relative;
+    top: 20px;
+    opacity:0;
+    transition: all 1.5s;
+  }
+  .fede-slide-up.show{
+    position: relative;
+    top: 0px;
+    opacity:1;
+  }
 @media screen and (max-width: $main-column-width){
   .project-header,
   .project-content h2,
@@ -142,7 +160,7 @@ export default {
     margin-left: calc(( 99vw - 90vw ) / 2 * -1)
   }
 }
-@media screen and (max-width:768px){
+@media screen and (max-width:1020px){
   .project{
     &-header{
       margin-top: 4.6rem;

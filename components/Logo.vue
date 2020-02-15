@@ -50,7 +50,7 @@
     opacity: 1;
   }
 }
-@media screen and (max-width:768px){
+@media screen and (max-width:1020px){
  .logo{
    width:9rem;
    height:1.6rem;

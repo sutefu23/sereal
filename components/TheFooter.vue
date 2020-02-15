@@ -25,7 +25,6 @@
 <style lang="scss">
 .footer{
   background-color: $gray-20;
-  height: 446px;
   padding-top: 123px;
   padding-bottom: 40px;
 }
@@ -54,9 +53,9 @@
 .copy-right{
   color : $gray-70;
   font-size: 1.1rem;
-  line-height: 22;
+  line-height: 2.2em;
 }
-@media screen and (max-width:768px){
+@media screen and (max-width:1020px){
   .footer{
     height: auto;
     padding-top: 16.4rem;
