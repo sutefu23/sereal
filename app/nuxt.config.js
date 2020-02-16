@@ -78,19 +78,23 @@ export default {
   /*
   ** Build configuration
   */
+  buildDir: '../functions/nuxt',
   build: {
     /*
     ** You can extend webpack config here
     */
     extend (config, ctx) {
     },
+    publicPath: '/',
+    extractCss: true,
     babel: {
       presets: [
         [
           '@babel/preset-env',
           {
             targets: { ie: 11, uglify: true },
-            useBuiltIns: 'usage'
+            useBuiltIns: 'usage',
+            "corejs": 2 
           }
         ]
       ],

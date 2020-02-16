@@ -32,7 +32,7 @@ export default {
 .project-list{
   display: flex;
   justify-content: space-between;
-  animation: slide-up-fade 1.5s;
+  animation: slide-up-fade .8s;
 }
 .is-empty {
   height: 0;
