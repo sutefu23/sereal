@@ -10,7 +10,7 @@ export default {
     titleTemplate: '%s - ' + process.env.site_name,
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1 ,user-scalable=no' },
       { hid: 'description', name: 'description', content: process.env.site_description || '' },
       { hid: 'og:site_name', property: 'og:site_name', content: process.env.site_name },
       { hid: 'og:type', property: 'og:type', content: 'website' },

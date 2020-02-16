@@ -4,7 +4,7 @@
       :to="{ path: '/project/'+ project.slug }"
       class="project-list-link"
     >
-      <project-main-image v-tilt="{max:10, perspective:1200, speed:4000,scale:1.089}" :project="project" class="project-image in-list" />
+      <project-main-image v-tilt="{max:max, perspective:1200, speed:4000,scale:scale}" :project="project" class="project-image in-list" />
       <h2 class="project-list-title">
         {{ project.title }}
       </h2>
@@ -15,6 +15,7 @@
 <script>
 import Vue from 'vue'
 import VueTilt from 'vue-tilt.js'
+import isMobile from 'ismobilejs'
 import ProjectMainImage from '~/components/ProjectMainImage.vue'
 
 Vue.use(VueTilt)
@@ -27,6 +28,12 @@ export default {
     project: {
       type: Object,
       default: () => {}
+    }
+  },
+  data () {
+    return {
+      scale: !isMobile.phone ? 1.089 : 0,
+      max: !isMobile.phone ? 10 : 16
     }
   }
 }

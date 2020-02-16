@@ -81,6 +81,7 @@ export default {
     }
     &-client{
       font-size: 1.4rem;
+      line-height: 1.4rem;
       font-weight: bold;
       margin-bottom: 16px;
     }

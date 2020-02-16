@@ -10,10 +10,6 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import VueTilt from 'vue-tilt.js'
-Vue.use(VueTilt)
-
 export default {
   props: {
     project: {
@@ -67,7 +63,7 @@ export default {
   .project-image.in-main img{
     position: absolute;
     width: calc(1920 * 100vw / 1536);
-    height: calc(100vw / 1536 * 677);
+    height: auto;
     left: calc(((1920 * 100vw / 1536) - 100vw) / 2 * -1) ;
     top :calc((767px - (100vw / 1536 * (100vw / 1536 * 677))) * -1);
   }
