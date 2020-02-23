@@ -4,7 +4,7 @@
       :to="{ path: '/project/'+ project.slug }"
       class="project-list-link"
     >
-      <project-main-image v-tilt="{max:max, perspective:1200, speed:4000,scale:scale}" :project="project" class="project-image in-list" />
+      <project-main-image v-tilt="{max:max, perspective:perspective, speed:4000,scale:scale}" :project="project" class="project-image in-list" />
       <h2 class="project-list-title">
         {{ project.title }}
       </h2>
@@ -32,8 +32,9 @@ export default {
   },
   data () {
     return {
-      scale: !isMobile.phone ? 1.089 : 1,
-      max: !isMobile.phone ? 10 : 16
+      scale: isMobile.any ? 1.089 : 1,
+      max: isMobile.any ? 10 : 16,
+      perspective: isMobile.any ? 1400 : 1000
     }
   }
 }
