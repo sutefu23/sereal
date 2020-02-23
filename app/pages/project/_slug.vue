@@ -2,7 +2,7 @@
   <main class="project">
     <project-main-image :project="project" class="project-image in-main" />
     <article>
-      <div v-scroll="handleScroll" class="project-header fede-slide-up">
+      <div class="project-header">
         <p class="project-client">
           {{ project.client }}
         </p>
@@ -15,7 +15,7 @@
           <span v-for="tag in project.tags" :key="tag.order" class="project-tag">{{ tag.name }}</span>
         </div>
       </div>
-      <section v-scroll="handleScroll" class="project-content fede-slide-up">
+      <section class="project-content">
         <h2>{{ project.article_title }}</h2>
         <div v-html="project.content">
           {{ }}
@@ -39,6 +39,11 @@ export default {
     ProjectList,
     ProjectMainImage
   },
+  head () {
+    return {
+      title: this.title
+    }
+  },
   async asyncData ({ store, params }) {
     try {
       const projects = await store.dispatch('getProjects')
@@ -55,7 +60,8 @@ export default {
       })
       return {
         projects: listProjects,
-        project: displayProject
+        project: displayProject,
+        title: displayProject.title
       }
     } catch (e) {
       console.error(e)
@@ -78,6 +84,8 @@ export default {
     &-header{
       margin-top: 56px;
       margin-bottom: 32px;
+      animation: fade-slide-up .8s;
+      transform: translate3d(0,0,0);
     }
     &-client{
       font-size: 1.4rem;
@@ -114,6 +122,8 @@ export default {
     font-size: 1.4rem;
     line-height: 3.6rem;
     color:$dark;
+    animation: fade-slide-up .8s;
+    transform: translate3d(0,0,0);
   }
   .project-content h2{
     font-size: 2.4rem;
@@ -140,15 +150,16 @@ export default {
   }
   .fede-slide-up{
     position: relative;
-    top: 20px;
     opacity:0;
-    transition: all 1.5s;
+    transition: all .8s;
+    transform: translate3d(0,0,0);
   }
   .fede-slide-up.show{
-    position: relative;
-    top: 0px;
-    opacity:1;
+    opacity: 1;
+    animation: fade-slide-up .8s;
+    transform: translate3d(0,0,0);
   }
+
 @media screen and (max-width: $main-column-width){
   .project-header,
   .project-content h2,
@@ -201,7 +212,8 @@ export default {
   .project-content img{
     margin-top:6rem;
     margin-bottom: 6rem;
-    margin-left: calc(( 100vw - #{$article-column-sp-width} ) / 2 * -1)
+    margin-left: calc(( #{$article-column-sp-width} - 72rem ) / 2);
+    width: 72.4rem;
   }
   .project-other{
     margin-top: 16rem;

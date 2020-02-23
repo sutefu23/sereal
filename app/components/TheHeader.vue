@@ -24,6 +24,7 @@ export default {
   padding-top: 36px;
   position: fixed;
   top:0;
+  left: 14px;
   z-index: 999;
   background: transparent
 }
@@ -31,6 +32,7 @@ export default {
  .header{
    height:4.8rem;
    padding-top: 2.4rem;
+   left: 0px;
  }
 }
 </style>

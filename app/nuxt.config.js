@@ -78,15 +78,15 @@ export default {
   /*
   ** Build configuration
   */
-  buildDir: '../functions/nuxt',
+  // buildDir: '../functions/nuxt',
   build: {
     /*
     ** You can extend webpack config here
     */
     extend (config, ctx) {
     },
-    publicPath: '/',
-    extractCss: true,
+    // publicPath: '/',
+    // extractCss: true,
     babel: {
       presets: [
         [

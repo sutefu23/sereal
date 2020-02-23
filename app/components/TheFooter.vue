@@ -3,7 +3,7 @@
     <div class="main-column">
       <div class="company-info">
         <h1 class="company-name">
-          SELEAL 株式会社
+          SEREAL 株式会社
         </h1>
         <p class="company-address">
           〒810-0001 福岡県福岡市中央区大名1-2-1 <br class="sp">Fukuoka Growth Next 206
@@ -27,6 +27,7 @@
   background-color: $gray-20;
   padding-top: 123px;
   padding-bottom: 40px;
+  padding-left: 24px;
 }
 .company{
   &-info{
@@ -60,6 +61,7 @@
     height: auto;
     padding-top: 16.4rem;
     padding-bottom: 3.2rem;
+    padding-left: 0;
   }
   .company{
     &-info{

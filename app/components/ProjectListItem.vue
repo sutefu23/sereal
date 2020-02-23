@@ -32,7 +32,7 @@ export default {
   },
   data () {
     return {
-      scale: !isMobile.phone ? 1.089 : 0,
+      scale: !isMobile.phone ? 1.089 : 1,
       max: !isMobile.phone ? 10 : 16
     }
   }
@@ -40,6 +40,10 @@ export default {
 </script>
 
 <style lang="scss">
+.home .project-list-item{
+  animation: fade-slide-up .8s;
+  transform: translate3d(0,0,0);
+}
 .project-list{
   &-item{
     width:342px;

@@ -44,7 +44,7 @@ export default {
     width: 608.29px;
     height: 243px;
     left: -147px;
-    top :0px;
+    bottom:0;
 }
 // .project-list-item:hover .project-image.in-list{
 //   width:342px;
@@ -65,7 +65,7 @@ export default {
     width: calc(1920 * 100vw / 1536);
     height: auto;
     left: calc(((1920 * 100vw / 1536) - 100vw) / 2 * -1) ;
-    top :calc((767px - (100vw / 1536 * (100vw / 1536 * 677))) * -1);
+    bottom:0;
   }
 }
 @media screen and (max-width:1020px){
@@ -76,7 +76,7 @@ export default {
     width: calc(969 * 100vw / 375);
     height: 38.7rem;
     left: calc(((969 * 100vw / 375) - 100vw) / 2 * -1) ;
-    top :calc((387px - (100vw / 375 * (969 * 100vw / 375))) * -1);
+    bottom:0;
   }
   .project-image.in-list{
       width:100%;
@@ -87,7 +87,10 @@ export default {
       width: 66.3rem;
       height: 26.5rem;
       left: -16.05rem;
-      top :-2.2rem;
+      bottom: 0;
+  }
+  .project-list-item:hover .project-image.in-list img{
+    transform: scale(1);
   }
 }
 </style>

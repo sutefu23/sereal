@@ -10,6 +10,11 @@ export default {
   components: {
     ProjectList
   },
+  head () {
+    return {
+      title: process.env.site_name
+    }
+  },
   async asyncData ({ store }) {
     try {
       const projects = await store.dispatch('getProjects')

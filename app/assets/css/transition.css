@@ -4,7 +4,7 @@
 .page-enter-active {
   transition: opacity 1.5s;
 }
-@keyframes slide-up-fade {
+@keyframes fade-slide-up {
   0% {
     position: relative;
     top: 20px;
