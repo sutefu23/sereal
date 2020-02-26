@@ -150,14 +150,14 @@ export default {
   }
   .fede-slide-up{
     position: relative;
-    opacity:0;
     transition: all .8s;
-    transform: translate3d(0,0,0);
+    position: relative;
+    top: 20px;
+    opacity: 0
   }
   .fede-slide-up.show{
-    opacity: 1;
-    animation: fade-slide-up .8s;
-    transform: translate3d(0,0,0);
+    top: 0px;
+    opacity: 1
   }
 
 @media screen and (max-width: $main-column-width){
@@ -203,6 +203,7 @@ export default {
   .project-content{
     font-size: 1.2rem;
     line-height: 3rem;
+    overflow-x: hidden;
   }
   .project-content h2{
     font-size: 2rem;

@@ -4,7 +4,7 @@
       :to="{ path: '/project/'+ project.slug }"
       class="project-list-link"
     >
-      <project-main-image v-tilt="{max:max, perspective:perspective, speed:4000,scale:scale}" :project="project" class="project-image in-list" />
+      <project-main-image v-tilt="{max:10, perspective:1400, speed:4000,scale:1.089}" :project="project" class="project-image in-list" />
       <h2 class="project-list-title">
         {{ project.title }}
       </h2>
@@ -29,13 +29,6 @@ export default {
       type: Object,
       default: () => {}
     }
-  },
-  data () {
-    return {
-      scale: isMobile.any ? 1.089 : 1,
-      max: isMobile.any ? 10 : 16,
-      perspective: isMobile.any ? 1400 : 1000
-    }
   }
 }
 </script>
@@ -43,7 +36,6 @@ export default {
 <style lang="scss">
 .home .project-list-item{
   animation: fade-slide-up .8s;
-  transform: translate3d(0,0,0);
 }
 .project-list{
   &-item{
@@ -63,6 +55,9 @@ export default {
     line-height: 1.5rem;
   }
   @media screen and (max-width:1020px){
+    .project-image{
+      transform: perspective(0px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)!important
+    }
     &-item{
       width:100%;
       height:28.1rem;
