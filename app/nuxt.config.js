@@ -1,13 +1,13 @@
 
 require('dotenv').config()
 export default {
-  mode: 'universal',
+  mode: 'spa',
   /*
   ** Headers of the page
   */
   head: {
-    title: process.env.site_name || '',
-    titleTemplate: '%s - ' + process.env.site_name,
+    // title: process.env.site_name || '',
+    // titleTemplate: '%s - ' + process.env.site_name,
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1 ,user-scalable=no' },
@@ -78,6 +78,9 @@ export default {
   /*
   ** Build configuration
   */
+  generate: {
+    fallback: true
+  },
   // buildDir: '../functions/nuxt',
   build: {
     /*
