@@ -15,7 +15,6 @@
 <script>
 import Vue from 'vue'
 import VueTilt from 'vue-tilt.js'
-import isMobile from 'ismobilejs'
 import ProjectMainImage from '~/components/ProjectMainImage.vue'
 
 Vue.use(VueTilt)
@@ -35,7 +34,7 @@ export default {
 
 <style lang="scss">
 .home .project-list-item{
-  animation: fade-slide-up .8s;
+  // animation: fade-slide-up .8s;
 }
 .project-list{
   &-item{

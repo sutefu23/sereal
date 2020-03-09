@@ -41,7 +41,7 @@ export default {
   },
   head () {
     return {
-      title: this.title + ' - ' + process.env.site_name,
+      title: this.title + ' - ' + process.env.site_name
     }
   },
   async asyncData ({ store, params }) {

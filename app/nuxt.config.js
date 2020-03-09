@@ -1,13 +1,12 @@
-
+const axios = require('axios')
 require('dotenv').config()
 export default {
-  mode: 'spa',
+  mode: 'universal',
   /*
   ** Headers of the page
   */
   head: {
-    // title: process.env.site_name || '',
-    // titleTemplate: '%s - ' + process.env.site_name,
+    title: process.env.site_name || '',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1 ,user-scalable=no' },
@@ -58,29 +57,55 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/dotenv',
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
+    '@nuxtjs/sitemap'
   ],
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
-    'https': true
+    'https': true,
+    baseUrl: process.env.API_URL
   },
   env: {
-    baseUrl: process.env.api_url
+    baseUrl: process.env.API_URL
   },
   styleResources: {
     scss: [
       '~/assets/css/variables.scss'
     ]
   },
+  sitemap: {
+    path: '/sitemap.xml',
+    hostname: 'https://sereal.jp',
+    // generate: true,
+    routes (callback) {
+      axios.get(process.env.API_URL + '/projects')
+      .then((res) => {
+        var routes = res.data.projects.map((project) => {
+          return '/project/' + project.slug
+        })
+        callback(null, routes)
+      })
+      .catch(callback)
+    }
+  },
+  generate: {
+    routes (callback) {
+      axios.get(process.env.API_URL + '/projects')
+      .then((res) => {
+        var routes = res.data.projects.map((project) => {
+          return '/project/' + project.slug
+        })
+        callback(null, routes)
+      })
+      .catch(callback)
+    }
+  },
   /*
   ** Build configuration
   */
-  generate: {
-    fallback: true
-  },
   // buildDir: '../functions/nuxt',
   build: {
     /*
@@ -97,7 +122,7 @@ export default {
           {
             targets: { ie: 11, uglify: true },
             useBuiltIns: 'usage',
-            "corejs": 2 
+            'corejs': 2
           }
         ]
       ],
