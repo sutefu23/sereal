@@ -34,7 +34,7 @@ export default {
 
 <style lang="scss">
 .home .project-list-item{
-  // animation: fade-slide-up .8s;
+  animation: fade-slide-up .8s;
 }
 .project-list{
   &-item{
