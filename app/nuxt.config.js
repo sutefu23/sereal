@@ -103,6 +103,11 @@ export default {
       .catch(callback)
     }
   },
+  buildModules: [
+    ['@nuxtjs/google-analytics', {
+      id: 'UA-168132650-1'
+    }]
+  ],
   /*
   ** Build configuration
   */
