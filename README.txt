@@ -8,7 +8,6 @@ docker exec -it sereal_nuxt_1 sh #←ターミナルに入る
 
 #パッケージインストール
 yarn --cwd ./app install
-yarn --cwd ./functions install
 
 
 #nuxtのビルド。（開発用起動はyarn --cwd ./app dev ）
