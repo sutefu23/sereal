@@ -16,7 +16,7 @@ export default {
       { hid: 'og:url', property: 'og:url', content: this.$route },
       { hid: 'og:title', property: 'og:title', content: process.env.site_name },
       { hid: 'og:description', property: 'og:description', content: process.env.site_description },
-      { hid: 'og:image', property: 'og:image', content: '/img/ogp.jpg' },
+      { hid: 'og:image', property: 'og:image', content: 'https://sereal.jp/img/ogp.png' },
       { property: 'article:publisher', content: 'FacebookURL' },
       { property: 'fb:app_id', content: 'FacebookAppID' }
     ],
