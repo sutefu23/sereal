@@ -1,5 +1,5 @@
 #Docker環境の起動
-docker-compse up -d 
+docker-compose up -d 
 
 
 docker exec -it sereal_nuxt_1 sh #←ターミナルに入る
