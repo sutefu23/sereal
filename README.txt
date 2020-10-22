@@ -16,5 +16,5 @@ yarn --cwd ./app build
 
 #firebase
 firebase login
-firebase serve # ←ローカルテスト起動
+firebase serve -o 0.0.0.0  # ←ローカルテスト起動
 firebase deploy # ←デプロイ
