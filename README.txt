@@ -13,6 +13,8 @@ yarn --cwd ./app install
 #nuxtのビルド。（開発用起動はyarn --cwd ./app dev ）
 yarn --cwd ./app build 
 
+#静的ファイルの生成
+yarn --cwd ./app generate 
 
 #firebase
 firebase login
