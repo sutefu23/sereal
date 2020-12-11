@@ -1,6 +1,6 @@
 <template>
   <main class="project">
-    <project-main-image :project="project" class="project-image in-main" />
+    <project-main-image v-if="project" :project="project" class="project-image in-main" />
     <article>
       <div class="project-header">
         <p class="project-client">
@@ -44,25 +44,30 @@ export default {
       title: this.title + ' - ' + process.env.site_name
     }
   },
-  async asyncData ({ store, params }) {
+  data(){
+    return{
+      project :"",
+      projects: [],
+      title: ""
+    }
+  },
+  async mounted () {
     try {
-      const projects = await store.dispatch('getProjects')
+      const projects = await this.$store.dispatch('getProjects')
 
       const listProjects = []
       let displayProject = ''
 
       projects.forEach((project) => {
-        if (project.slug === params.slug) {
+        if (project.slug === this.$route.params.slug) {
           displayProject = project
         } else {
           listProjects.push(project)
         }
       })
-      return {
-        projects: listProjects,
-        project: displayProject,
-        title: displayProject.title
-      }
+      this.projects = listProjects
+      this.project = displayProject
+      this.title = displayProject.title
     } catch (e) {
       console.error(e)
     }

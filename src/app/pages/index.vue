@@ -15,16 +15,18 @@ export default {
       title: process.env.site_name
     }
   },
-  async asyncData ({ store }) {
+  data(){
+    return{
+      projects: []
+    }
+  },
+  async mounted () {
     try {
-      const projects = await store.dispatch('getProjects')
-      return {
-        projects
-      }
+      this.projects = await this.$store.dispatch('getProjects')
     } catch (e) {
       console.error(e)
     }
-  }
+  },
 }
 </script>
 

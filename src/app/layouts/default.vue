@@ -12,6 +12,11 @@ export default {
   components: {
     TheHeader,
     TheFooter
+  },
+  data(){
+    return {
+      isLoaded : false
+    }
   }
 }
 </script>
@@ -28,6 +33,9 @@ a{
 img{
   width:100%;
   height: auto;
+}
+main{
+  min-height: 600px;
 }
 .main-column{/*メイン列*/
   max-width: $main-column-width;
